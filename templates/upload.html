@@ -1,0 +1,36 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div align="center">
+            <h3 style="color:darkgreen">Please select the file to upload (*.jpg or *.jpeg):</h3>
+            <form action="http://localhost:5000/" method="POST" enctype="multipart/form-data">
+                {{ form.csrf }}
+                {{ form.file_name.label }} {{ form.file_name }}
+                <input type="submit" value="Submit"/>
+            </form>
+            <h3 style="color:darkgreen">Or press "Refresh" to see the results:</h3>
+            <button onClick="window.location.reload();">Refresh</button>
+        </div>   
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for message in messages %}
+                    {% if loop.first %}
+                        <div align="center">
+                            <h3 style="color:darkgreen">{{ message[1] }}</h3>
+                            <br>
+                            <hr>
+                        </div>
+                    {% else %}
+                        <div align="center">
+                            <img src="{{ message[1] }}" style="width: 200px; height: auto;">
+                        </div>
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </body>
+</html>
