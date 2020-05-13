@@ -10,16 +10,14 @@ class ReusableForm(Form):
 
 
 # Parameters
-UPLOAD_FOLDER = "static"
-STATIC_FOLDER = "static"
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg'])
 
 # Instantiate our application
 app = Flask(__name__)
 
 # Configure the app
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['STATIC_FOLDER'] = STATIC_FOLDER
+app.config['UPLOAD_FOLDER'] = os.environ["UPLOAD_FOLDER"]
+app.config['STATIC_FOLDER'] = os.environ["STATIC_FOLDER"]
 app.config['SECRET_KEY'] = '20200504'
 
 
