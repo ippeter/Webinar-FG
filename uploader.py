@@ -10,14 +10,16 @@ class ReusableForm(Form):
 
 
 # Parameters
+UPLOAD_FOLDER = os.environ["UPLOAD_FOLDER"]
+STATIC_FOLDER = os.environ["STATIC_FOLDER"]
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg'])
 
 # Instantiate our application
 app = Flask(__name__)
 
 # Configure the app
-app.config['UPLOAD_FOLDER'] = os.environ["UPLOAD_FOLDER"]
-app.config['STATIC_FOLDER'] = os.environ["STATIC_FOLDER"]
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['STATIC_FOLDER'] = STATIC_FOLDER
 app.config['SECRET_KEY'] = '20200504'
 
 
@@ -31,7 +33,7 @@ def upload():
 
       if (f):         
          if (f.filename.split(".")[-1] in ALLOWED_EXTENSIONS):
-            f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
+            f.save(os.path.join(UPLOAD_FOLDER, secure_filename(f.filename)))
             flash("File uploaded successfully.")
          else:
             flash("Please provide either JPG or JPEG file!")
