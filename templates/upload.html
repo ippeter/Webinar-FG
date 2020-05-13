@@ -5,7 +5,7 @@
     <body>
         <div align="center">
             <h3 style="color:darkgreen">Please select the file to upload (*.jpg or *.jpeg):</h3>
-            <form action="http://localhost:5000/" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 {{ form.csrf }}
                 {{ form.file_name.label }} {{ form.file_name }}
                 <input type="submit" value="Submit"/>
