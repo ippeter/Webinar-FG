@@ -3,6 +3,7 @@ from wtforms import Form, FileField, validators
 from werkzeug.utils import secure_filename
 
 import os
+import logging
 
 
 class ReusableForm(Form):
@@ -22,6 +23,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['STATIC_FOLDER'] = STATIC_FOLDER
 app.config['SECRET_KEY'] = '20200504'
 
+# Enable logging
+LOG = create_logger(app)
+LOG.setLevel(logging.INFO)
+
 
 @app.route('/', methods = ['GET', 'POST'])
 def upload():
@@ -30,6 +35,9 @@ def upload():
 
    if (request.method == 'POST'):
       f = request.files['file_name']
+
+      # Output file name for debugging
+      LOG.info("POST request received for file %s" % (f.filename))
 
       if (f):         
          if (f.filename.split(".")[-1] in ALLOWED_EXTENSIONS):
