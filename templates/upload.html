@@ -11,7 +11,7 @@
                 <input type="submit" value="Submit"/>
             </form>
             <h3 style="color:darkgreen">Or press "Refresh" to see the results:</h3>
-            <button onClick="window.location.reload();">Refresh</button>
+            <button onClick="window.location.href = window.location.href;">Refresh</button>
         </div>   
 
         {% with messages = get_flashed_messages(with_categories=true) %}
