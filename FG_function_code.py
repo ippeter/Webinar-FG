@@ -12,6 +12,8 @@ def handler(event, context):
     sk = context.getSecretKey()
     endpoint = "obs.ru-moscow-1.hc.sbercloud.ru"
 
+    static_bucket_name = os.environ["STATIC_BUCKET_NAME"]
+
     logger = context.getLogger()
     bucket_name = event['Records'][0]['obs']['bucket']["name"]
     file_name = event['Records'][0]['obs']['object']["key"]
@@ -44,7 +46,7 @@ def handler(event, context):
 
         result.save(local_outgoing_file_name)
 
-        resp = conn.putFile("pvc-91c18543-9524-11ea-8dc4-fa163e7f29e7", file_name, local_outgoing_file_name)
+        resp = conn.putFile(static_bucket_name, file_name, local_outgoing_file_name)
         logger.info(resp["status"])
 
-    return "File processed."
+    return "File processed successfully."
