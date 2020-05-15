@@ -16,7 +16,7 @@ def handler(event, context):
         event: JSON-structure with details of the event which triggered the function
         context: security context of the function
     Output:
-        it's optional
+        it's optional (we will return a completion message string)
     """
     
     # Get Access Key/Secret Key to work with OBS from the security context 
