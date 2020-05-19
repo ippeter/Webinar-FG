@@ -15,8 +15,9 @@ def handler(event, context):
     token = context.getToken()                                                  # Obtains a token for the tenant. The token will be valid for 24 hours. An agency is required to access IAM.
     project_id = context.getProjectID()                                         # Obtains a project ID.
     
-    # Set up logger and output project id
+    # Set up logger and output ecs id
     logger = context.getLogger()
+    
     data = json.loads(event['record'][0]['smn']['message'])
     ecs_id = data["dimension"].split(":")[1]
     logger.info(ecs_id)
