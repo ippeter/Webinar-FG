@@ -20,7 +20,7 @@ def handler(event, context):
     
     data = json.loads(event['record'][0]['smn']['message'])
     ecs_id = data["dimension"].split(":")[1]
-    logger.info(ecs_id)
+    logger.info("About to stop the ECS with id %s" % ecs_id)
 
     # Build Header and Body of the POST request
     hdr = {'Content-Type': 'application/json;charset=utf8', 'X-Auth-Token': token}
