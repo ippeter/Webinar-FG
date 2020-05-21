@@ -24,7 +24,7 @@ def handler(event, context):
     bdy = json.dumps({ "os-start": {} })
 
     # Do POST request
-    resp = requests.post("https://ecs.ru-moscow-1.hc.sbercloud.ru/v2.1/" + project_id + "/servers/c0724bb9-e92e-4232-bfb7-a2963c73b7a4/action", headers=hdr, data=bdy)
+    resp = requests.post("https://ecs.ru-moscow-1.hc.sbercloud.ru/v2.1/" + project_id + "/servers/7964b9cc-bc4e-4014-aad3-f739915058d8/action", headers=hdr, data=bdy)
 
     return resp.status_code
 
