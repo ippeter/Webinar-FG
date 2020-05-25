@@ -17,6 +17,7 @@ def handler(event, context):
     
     # Set up logger and output ecs id
     logger = context.getLogger()
+    logger.info(event)
     
     data = json.loads(event['record'][0]['smn']['message'])
     ecs_id = data["dimension"].split(":")[1]
